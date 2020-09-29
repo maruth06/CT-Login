@@ -6,15 +6,22 @@
 //
 
 import UIKit
+import Combine
 
 class LoginViewController: UIViewController {
 
     @IBOutlet private weak var bottomConstraints: NSLayoutConstraint!
     @IBOutlet private weak var userNameTextField: MaterialTextField!
     @IBOutlet private weak var passwordTextField: MaterialTextField!
+    @IBOutlet private weak var togglePasswordButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
     
+    private var viewModel : LoginViewModel!
+    private var subscriptions = Set<AnyCancellable>()
+
     class func instantiate() -> UIViewController {
         let viewController = LoginViewController()
+        viewController.viewModel = LoginViewModel()
         return viewController
     }
     
@@ -22,8 +29,30 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setupNotificationObservers()
+        configureBindings()
     }
 
+    private func configureViews() {
+        userNameTextField.delegate = self
+        passwordTextField.delegate = self
+        userNameTextField.returnKeyType = .next
+        passwordTextField.returnKeyType = .done
+    }
+    
+    private func configureBindings() {
+        viewModel.$isLoginSuccess.sink { (isSuccess) in
+            if isSuccess {
+                
+            } else {
+                self.loginButton.shake()
+            }
+        }.store(in: &subscriptions)
+        viewModel.$showPassword.sink { (isShow) in
+            let title = isShow ? "HIDE" : "SHOW"
+            self.togglePasswordButton.setTitle(title, for: .normal)
+            self.passwordTextField.isSecureTextEntry = !isShow
+        }.store(in: &subscriptions)
+    }
     
     private func setupNotificationObservers() {
         NotificationCenter.default.addObserver(
@@ -52,5 +81,36 @@ class LoginViewController: UIViewController {
                        options: animationCurve,
                        animations: { if let view = self.view { view.layoutIfNeeded() } },
                        completion: nil)
+    }
+    
+    @IBAction func onTappedLoginButton(_ sender: Any) {
+        viewModel.validateUserCredentials(userNameTextField.text,
+                                          passwordTextField.text)
+    }
+    
+    @IBAction func onTappedCreateAccountButton(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func onTappedTogglePasswordButton(_ sender: Any) {
+        viewModel.showPassword = !viewModel.showPassword
+    }
+}
+
+extension LoginViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField.returnKeyType {
+        case .next:
+            passwordTextField.becomeFirstResponder()
+            break
+        case .done:
+            viewModel.validateUserCredentials(userNameTextField.text,
+                                              passwordTextField.text)
+            break
+        default: break
+        }
+        return true
     }
 }

@@ -11,8 +11,10 @@ import UIKit
 class MaterialTextField : UITextField {
     
     var floatingLabel: UILabel = UILabel(frame: CGRect.zero)
-    var floatingLabelHeight: CGFloat = 14 // Default height
-    @IBInspectable var _placeholder: String? // we cannot override 'placeholder'
+    var errorMesageLabel: UILabel = UILabel(frame: CGRect.zero)
+    var floatingLabelHeight: CGFloat = 14
+    var errorMesageLabelHeight: CGFloat = 14
+    @IBInspectable var _placeholder: String?
     @IBInspectable var floatingLabelColor: UIColor = UIColor.black {
         didSet {
             self.floatingLabel.textColor = floatingLabelColor
@@ -28,8 +30,10 @@ class MaterialTextField : UITextField {
         }
     }
     var errorMessage : String? {
-        didSet {
-            
+        didSet (value) {
+            guard value != nil else { return }
+            self.activeBorderColor = .red
+            self.setNeedsLayout()
         }
     }
     

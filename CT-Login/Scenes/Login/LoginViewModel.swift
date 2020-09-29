@@ -19,8 +19,20 @@ class LoginViewModel : ObservableObject, Identifiable {
         }
         return list
     }
+    
+    @Published private(set) var isLoginSuccess : Bool = false
+    @Published var showPassword : Bool = false
 
     init() {
-        
+
+    }
+    
+    func validateUserCredentials(_ userName: String?, _ password: String?) {
+        guard let userName = userName?.trimmingCharacters(in: .whitespacesAndNewlines),
+              let password = password else {
+            isLoginSuccess = false
+            return
+        }
+        isLoginSuccess = true
     }
 }
