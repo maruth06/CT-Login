@@ -24,7 +24,7 @@ class LoginViewModel : ObservableObject, Identifiable {
     @Published var showPassword : Bool = false
 
     init() {
-
+        SQLiteDatabase.shared.insertUser("mockUser", "helloWorld")
     }
     
     func validateUserCredentials(_ userName: String?, _ password: String?) {
@@ -33,6 +33,6 @@ class LoginViewModel : ObservableObject, Identifiable {
             isLoginSuccess = false
             return
         }
-        isLoginSuccess = true
+        isLoginSuccess = (SQLiteDatabase.shared.queryUsers(userName, password).count != 0)
     }
 }

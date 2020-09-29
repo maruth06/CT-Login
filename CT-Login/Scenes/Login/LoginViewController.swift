@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
     private func configureBindings() {
         viewModel.$isLoginSuccess.sink { (isSuccess) in
             if isSuccess {
-                
+                print("Show list & details")
             } else {
                 self.loginButton.shake()
             }
