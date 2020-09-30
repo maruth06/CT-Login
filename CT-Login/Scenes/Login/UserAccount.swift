@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserAccount {
+struct UserAccountEntity {
     var userName : String
     var userId : Int
     

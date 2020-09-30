@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A04B255252463EA0067F10F /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04B254252463EA0067F10F /* UserTableViewController.swift */; };
+		7A04B25D252465180067F10F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04B25C252465180067F10F /* DetailsViewController.swift */; };
 		7A860E782522CB4700DC4FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860E772522CB4700DC4FB4 /* AppDelegate.swift */; };
 		7A860E7A2522CB4700DC4FB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860E792522CB4700DC4FB4 /* SceneDelegate.swift */; };
 		7A860E812522CB4800DC4FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A860E802522CB4800DC4FB4 /* Assets.xcassets */; };
@@ -22,12 +24,16 @@
 		7A860F1F25233DA200DC4FB4 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F1D25233DA200DC4FB4 /* CreateAccountViewController.swift */; };
 		7A860F2025233DA200DC4FB4 /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A860F1E25233DA200DC4FB4 /* CreateAccountViewController.xib */; };
 		7A860F2B2523402700DC4FB4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F2A2523402700DC4FB4 /* UIView+Extensions.swift */; };
-		7A860F372523440300DC4FB4 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F362523440300DC4FB4 /* MaterialTextField.swift */; };
 		7A860F422523492B00DC4FB4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F412523492B00DC4FB4 /* LoginViewModel.swift */; };
 		7A860F472523493C00DC4FB4 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F462523493C00DC4FB4 /* CreateAccountViewModel.swift */; };
 		7A860F4C25234DDA00DC4FB4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F4B25234DDA00DC4FB4 /* UserAccount.swift */; };
 		7AA9E0EF25238B3B0084D6C0 /* SQLiteDatabse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9E0EE25238B3B0084D6C0 /* SQLiteDatabse.swift */; };
 		7AA9E101252394630084D6C0 /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9E100252394630084D6C0 /* APIRepository.swift */; };
+		7AA9E1112523A0B60084D6C0 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AA9E1102523A0B60084D6C0 /* Details.storyboard */; };
+		7AA9E1212523A4520084D6C0 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9E1202523A4520084D6C0 /* UITableView+Extensions.swift */; };
+		7AA9E12A2523A4990084D6C0 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9E1282523A4990084D6C0 /* ItemTableViewCell.swift */; };
+		7AA9E12B2523A4990084D6C0 /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AA9E1292523A4990084D6C0 /* ItemTableViewCell.xib */; };
+		7AA9E1302523A4C00084D6C0 /* UserEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9E12F2523A4C00084D6C0 /* UserEntities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A04B254252463EA0067F10F /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		7A04B25C252465180067F10F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		7A860E742522CB4700DC4FB4 /* CT-Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CT-Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A860E772522CB4700DC4FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A860E792522CB4700DC4FB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,13 +77,17 @@
 		7A860F1D25233DA200DC4FB4 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		7A860F1E25233DA200DC4FB4 /* CreateAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
 		7A860F2A2523402700DC4FB4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		7A860F362523440300DC4FB4 /* MaterialTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		7A860F412523492B00DC4FB4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7A860F462523493C00DC4FB4 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		7A860F4B25234DDA00DC4FB4 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		7AA9E0EE25238B3B0084D6C0 /* SQLiteDatabse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabse.swift; sourceTree = "<group>"; };
 		7AA9E0F625238CB40084D6C0 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7AA9E100252394630084D6C0 /* APIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
+		7AA9E1102523A0B60084D6C0 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
+		7AA9E1202523A4520084D6C0 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		7AA9E1282523A4990084D6C0 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		7AA9E1292523A4990084D6C0 /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
+		7AA9E12F2523A4C00084D6C0 /* UserEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +141,8 @@
 				7A860E772522CB4700DC4FB4 /* AppDelegate.swift */,
 				7A860E792522CB4700DC4FB4 /* SceneDelegate.swift */,
 				7A860EB62522CF2500DC4FB4 /* Scenes */,
-				7A860EC62522D08B00DC4FB4 /* Utilities */,
 				7AA9E0EC25238B160084D6C0 /* Repository */,
+				7A860EC62522D08B00DC4FB4 /* Utilities */,
 				7A860EB32522CEB800DC4FB4 /* Resources */,
 			);
 			path = "CT-Login";
@@ -189,6 +201,12 @@
 		7A860EB42522CECB00DC4FB4 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				7AA9E12F2523A4C00084D6C0 /* UserEntities.swift */,
+				7AA9E1102523A0B60084D6C0 /* Details.storyboard */,
+				7AA9E1282523A4990084D6C0 /* ItemTableViewCell.swift */,
+				7AA9E1292523A4990084D6C0 /* ItemTableViewCell.xib */,
+				7A04B254252463EA0067F10F /* UserTableViewController.swift */,
+				7A04B25C252465180067F10F /* DetailsViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -217,7 +235,6 @@
 		7A860EC62522D08B00DC4FB4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				7A860F35252343F200DC4FB4 /* Custom */,
 				7A860EC72522D0EA00DC4FB4 /* Extensions */,
 			);
 			path = Utilities;
@@ -228,16 +245,9 @@
 			children = (
 				7A860EC82522D11400DC4FB4 /* UIViewController+Extensions.swift */,
 				7A860F2A2523402700DC4FB4 /* UIView+Extensions.swift */,
+				7AA9E1202523A4520084D6C0 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		7A860F35252343F200DC4FB4 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				7A860F362523440300DC4FB4 /* MaterialTextField.swift */,
-			);
-			path = Custom;
 			sourceTree = "<group>";
 		};
 		7AA9E0EC25238B160084D6C0 /* Repository */ = {
@@ -360,9 +370,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA9E1112523A0B60084D6C0 /* Details.storyboard in Resources */,
 				7A860F2025233DA200DC4FB4 /* CreateAccountViewController.xib in Resources */,
 				7A860E842522CB4800DC4FB4 /* LaunchScreen.storyboard in Resources */,
 				7A860E812522CB4800DC4FB4 /* Assets.xcassets in Resources */,
+				7AA9E12B2523A4990084D6C0 /* ItemTableViewCell.xib in Resources */,
 				7A860ED32522D25800DC4FB4 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,17 +400,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AA9E1212523A4520084D6C0 /* UITableView+Extensions.swift in Sources */,
 				7A860ED22522D25800DC4FB4 /* LoginViewController.swift in Sources */,
 				7A860EC22522D00400DC4FB4 /* ErrorModel.swift in Sources */,
 				7A860F422523492B00DC4FB4 /* LoginViewModel.swift in Sources */,
+				7AA9E12A2523A4990084D6C0 /* ItemTableViewCell.swift in Sources */,
+				7A04B255252463EA0067F10F /* UserTableViewController.swift in Sources */,
 				7AA9E101252394630084D6C0 /* APIRepository.swift in Sources */,
-				7A860F372523440300DC4FB4 /* MaterialTextField.swift in Sources */,
 				7A860F472523493C00DC4FB4 /* CreateAccountViewModel.swift in Sources */,
 				7A860F4C25234DDA00DC4FB4 /* UserAccount.swift in Sources */,
 				7AA9E0EF25238B3B0084D6C0 /* SQLiteDatabse.swift in Sources */,
 				7A860E782522CB4700DC4FB4 /* AppDelegate.swift in Sources */,
 				7A860E7A2522CB4700DC4FB4 /* SceneDelegate.swift in Sources */,
 				7A860F2B2523402700DC4FB4 /* UIView+Extensions.swift in Sources */,
+				7A04B25D252465180067F10F /* DetailsViewController.swift in Sources */,
+				7AA9E1302523A4C00084D6C0 /* UserEntities.swift in Sources */,
 				7A860F1F25233DA200DC4FB4 /* CreateAccountViewController.swift in Sources */,
 				7A860EBD2522CF9A00DC4FB4 /* AppEndpoint.swift in Sources */,
 				7A860EC92522D11400DC4FB4 /* UIViewController+Extensions.swift in Sources */,

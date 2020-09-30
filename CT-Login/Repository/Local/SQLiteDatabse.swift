@@ -81,10 +81,10 @@ extension SQLiteDatabase {
         sqlite3_finalize(insertStatement)
     }
     
-    func queryUsers(_ userName: String, _ password: String) -> [UserAccount] {
+    func queryUsers(_ userName: String, _ password: String) -> [UserAccountEntity] {
         let queryStatementString = "SELECT * FROM user WHERE name LIKE ? AND password LIKE ?;"
         var queryStatement: OpaquePointer? = nil
-        var users : [UserAccount] = []
+        var users : [UserAccountEntity] = []
 
         if sqlite3_prepare_v2(dbPointer, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
             sqlite3_bind_text(queryStatement, 1, (userName as NSString).utf8String, -1, nil)
@@ -93,7 +93,7 @@ extension SQLiteDatabase {
                 let id = sqlite3_column_int(queryStatement, 0)
                 let name = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
                 let password = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
-                users.append(UserAccount(id: Int(id), name: name))
+                users.append(UserAccountEntity(id: Int(id), name: name))
                 print("Query Result:")
                 print("\(id) | \(name) | \(password)")
             }

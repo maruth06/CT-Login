@@ -11,10 +11,12 @@ import Combine
 class LoginViewController: UIViewController {
 
     @IBOutlet private weak var bottomConstraints: NSLayoutConstraint!
-    @IBOutlet private weak var userNameTextField: MaterialTextField!
-    @IBOutlet private weak var passwordTextField: MaterialTextField!
+    @IBOutlet private weak var userNameTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var togglePasswordButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var errorMessageLabel: UILabel!
+    @IBOutlet private weak var loginView: UIView!
     
     private var viewModel : LoginViewModel!
     private var subscriptions = Set<AnyCancellable>()
@@ -37,12 +39,13 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         userNameTextField.returnKeyType = .next
         passwordTextField.returnKeyType = .done
+        loginView.fadeIn(duration: 4)
     }
     
     private func configureBindings() {
         viewModel.$isLoginSuccess.sink { (isSuccess) in
             if isSuccess {
-                print("Show list & details")
+                self.showUserDetailsView()
             } else {
                 self.loginButton.shake()
             }
@@ -60,6 +63,13 @@ class LoginViewController: UIViewController {
             selector: #selector(keyboardNotification(notification:)),
             name: UIResponder.keyboardWillChangeFrameNotification,
             object: nil)
+    }
+    
+    // MARK: - Navigation Methods
+    private func showUserDetailsView() {
+        let viewController = UserTableViewController.instantiate()
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
     }
     
     // MARK: - Action Methods

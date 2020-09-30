@@ -28,4 +28,36 @@ extension UIView {
         
         layer.add(shake, forKey: "position")
     }
+    
+    func slideUp(duration: TimeInterval = 1.0, completionDelegate: CAAnimationDelegate? = nil) {
+        // Create a CATransition animation
+        let transition = CATransition()
+        
+        // Set its callback delegate to the completionDelegate that was provided (if any)
+        if let delegate = completionDelegate {
+            transition.delegate = delegate
+        }
+        
+        // Customize the animation's properties
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromBottom
+        transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.fillMode = CAMediaTimingFillMode.removed
+        
+        // Add the animation to the View's layer
+        self.layer.add(transition, forKey: "slideUpFromBottomTransition")
+    }
+    
+    func fadeIn(duration: TimeInterval = 1.0) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 1.0
+        })
+    }
+    
+    func fadeOut(duration: TimeInterval = 1.0) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.0
+        })
+    }
 }
