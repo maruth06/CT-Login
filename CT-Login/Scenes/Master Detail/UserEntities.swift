@@ -11,12 +11,16 @@ class UserModel: Codable {
     
     var id : Int
     var name : String
-    var userName : String
+    var username : String
     var email : String
     var address : AddressModel
     var phone : String
     var website : String
-
+    var company : CompanyModel
+    
+    func toItemModel() -> ItemModel {
+        return ItemModel(name: name, userName: username, company: company.name)
+    }
 }
 
 class AddressModel : Codable {

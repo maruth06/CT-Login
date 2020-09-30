@@ -67,6 +67,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Navigation Methods
     private func showUserDetailsView() {
+//        let viewController = MasterDetailsViewController.instantiate()
         let viewController = UserTableViewController.instantiate()
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()

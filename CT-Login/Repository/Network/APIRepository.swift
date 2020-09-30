@@ -10,6 +10,11 @@ import Foundation
 class APIRepository {
     
     class Details {
-        
+        static func userList() -> AppEndpoint<[UserModel]> {
+            return AppEndpoint(
+                urlString: "https://jsonplaceholder.typicode.com/users",
+                httpMethod: .GET,
+                timeout: 10)
+        }
     }
 }
