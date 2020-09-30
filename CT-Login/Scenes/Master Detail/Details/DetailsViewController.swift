@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Combine
 
 class DetailsViewController: UIViewController {
 
@@ -17,16 +18,34 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
-    private var viewModel : DetailsViewModel!
+    private lazy var viewModel : DetailsViewModel = {
+        return DetailsViewModel()
+    }()
     
-    class func instantiate(_ viewModel : DetailsViewModel) -> UIViewController {
-        let viewController = DetailsViewController.instantiate(fromStoryboard: .Details)
-        viewController.viewModel = viewModel
-        return viewController
-    }
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureBindings()
+    }
+    
+    private func configureBindings() {
+        viewModel.$detailsModel.sink { [weak self] (detailsModel) in
+            guard let self = self else { return }
+            self.mapView.setRegion(self.viewModel.region, animated: true)
+            self.mapView.addAnnotation(self.viewModel.pointAnnotation)
+            self.fullNameLabel.text = detailsModel.name
+            self.userNameLabel.text = detailsModel.username
+            self.emailLabel.text = detailsModel.email
+            self.phoneLabel.text = detailsModel.phone
+            self.addressLabel.text = detailsModel.address
+        }.store(in: &subscriptions)
+    }
+}
 
+extension DetailsViewController : UserSelectedDelegate {
+    func updateUserDetailsViewController(_ detailsModel: DetailsModel) {
+        viewModel.updateDetailsModel(detailsModel)
     }
 }

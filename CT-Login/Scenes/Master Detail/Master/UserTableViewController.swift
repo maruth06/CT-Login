@@ -8,16 +8,21 @@
 import UIKit
 import Combine
 
+protocol UserSelectedDelegate : class {
+    func updateUserDetailsViewController(_ detailsModel: DetailsModel)
+}
+
 class UserTableViewController: UITableViewController {
 
     private lazy var viewModel : UserTableViewModel = {
         return UserTableViewModel()
     }()
     private var subscriptions = Set<AnyCancellable>()
-
-    class func instantiate() -> UITableViewController {
-        let viewController = UserTableViewController.instantiate(fromStoryboard: .Details)
-        return viewController
+    private var delegate : UserSelectedDelegate?
+    private var detailsViewController : DetailsViewController?
+    
+    func setDelegate(_ delegate : UserSelectedDelegate) {
+        self.delegate = delegate
     }
     
     override func viewDidLoad() {
@@ -25,6 +30,12 @@ class UserTableViewController: UITableViewController {
 
         configureView()
         configureBindings()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.refreshControl?.beginRefreshing()
+        loadList()
     }
     
     private func configureView() {
@@ -52,7 +63,7 @@ class UserTableViewController: UITableViewController {
     }
 }
 
-// MARK: UITableViewDataSourceDelegate
+// MARK: UITableViewDataSource
 extension UserTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : ItemTableViewCell = tableView.dequeueReusableCell()
@@ -61,6 +72,17 @@ extension UserTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.dataSource.count
+        return viewModel.dataSource
     }
 }
+
+// MARK: UITableViewDelegate
+extension UserTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        delegate?.updateUserDetailsViewController(viewModel.getDetailsViewModel(indexPath.row))
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+

@@ -92,6 +92,7 @@
                             <constraint firstItem="dKl-Ik-r0I" firstAttribute="leading" secondItem="HYu-sE-Zs5" secondAttribute="leading" id="kWs-J6-Ktm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="lkW-PC-Fdj"/>
                     <connections>
                         <outlet property="addressLabel" destination="nTj-3p-Tdo" id="VBp-u3-bFs"/>
                         <outlet property="emailLabel" destination="WF9-Hu-Dou" id="6W0-Nh-4V5"/>
@@ -103,9 +104,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6g-FF-CdM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-688.40579710144937" y="127.90178571428571"/>
+            <point key="canvasLocation" x="221.73913043478262" y="127.90178571428571"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Users-->
         <scene sceneID="OdE-Ae-172">
             <objects>
                 <tableViewController storyboardIdentifier="UserTableViewController" clearsSelectionOnViewWillAppear="NO" id="nHF-GJ-2rf" customClass="UserTableViewController" customModule="CT_Login" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,7 +129,7 @@
                             <outlet property="delegate" destination="nHF-GJ-2rf" id="koN-kc-quq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="STX-ME-jaP"/>
+                    <navigationItem key="navigationItem" title="Users" id="STX-ME-jaP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMW-kr-ECe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,18 +151,36 @@
             </objects>
             <point key="canvasLocation" x="-688" y="-539"/>
         </scene>
-        <!--Master Details View Controller-->
+        <!--Split View Controller-->
         <scene sceneID="thf-b0-Y0R">
             <objects>
-                <splitViewController storyboardIdentifier="MasterDetailsViewController" allowDoubleColumnStyle="YES" id="jzb-U7-QtU" customClass="MasterDetailsViewController" customModule="CT_Login" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="SplitViewController" allowDoubleColumnStyle="YES" id="jzb-U7-QtU" customClass="SplitViewController" customModule="CT_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="NWH-dA-JnJ" kind="relationship" relationship="masterViewController" id="GuZ-h5-aw7"/>
-                        <segue destination="QvN-3I-yM3" kind="relationship" relationship="detailViewController" id="xRo-0p-PDB"/>
+                        <segue destination="wMt-A2-W5s" kind="relationship" relationship="detailViewController" id="xRo-0p-PDB"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUN-7P-mWC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1578" y="-235"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="t4e-BV-eFI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wMt-A2-W5s" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mw7-Mk-Z2T">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QvN-3I-yM3" kind="relationship" relationship="rootViewController" id="1Fh-YB-Ahd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="va3-0F-gfV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-688.40579710144937" y="127.90178571428571"/>
         </scene>
     </scenes>
     <resources>

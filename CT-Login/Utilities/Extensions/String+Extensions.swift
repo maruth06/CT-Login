@@ -14,4 +14,8 @@ extension String {
         guard let number = NumberFormatter().number(from: self) else { return 0.0 }
         return CGFloat(truncating: number)
     }
+    
+    var toDouble : Double {
+        return Double(self) ?? 0.0
+    }
 }

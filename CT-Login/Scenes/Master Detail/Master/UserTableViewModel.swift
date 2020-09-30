@@ -10,11 +10,12 @@ import Combine
 
 class UserTableViewModel : ObservableObject, Identifiable {
     
-    @Published private(set) var dataSource : [UserModel]
+    @Published private(set) var dataSource : Int = 0
     @Published private(set) var errorModel : ErrorModel?
+    private var users : [UserModel]
     
     init() {
-        dataSource = []
+        users = []
     }
     
     func fetchUsers() {
@@ -22,7 +23,8 @@ class UserTableViewModel : ObservableObject, Identifiable {
             guard let self = self else { return }
             switch results {
             case.success(let users):
-                self.dataSource = users
+                self.users = users
+                self.dataSource = users.count
                 break
             case .failure(let errorModel):
                 self.errorModel = errorModel
@@ -32,6 +34,10 @@ class UserTableViewModel : ObservableObject, Identifiable {
     }
     
     func getItemModel(_ row : Int) -> ItemModel {
-        return dataSource[row].toItemModel()
+        return users[row].toItemModel()
+    }
+    
+    func getDetailsViewModel(_ row : Int) -> DetailsModel{
+        return users[row].toDetailsModel()
     }
 }

@@ -21,6 +21,10 @@ class UserModel: Codable {
     func toItemModel() -> ItemModel {
         return ItemModel(name: name, userName: username, company: company.name)
     }
+    
+    func toDetailsModel() -> DetailsModel {
+        return DetailsModel(self)
+    }
 }
 
 class AddressModel : Codable {

@@ -32,6 +32,9 @@ class LoginViewController: UIViewController {
 
         setupNotificationObservers()
         configureBindings()
+        
+        userNameTextField.text = "mockUser"
+        passwordTextField.text = "helloWorld"
     }
 
     private func configureViews() {
@@ -67,10 +70,8 @@ class LoginViewController: UIViewController {
     
     // MARK: - Navigation Methods
     private func showUserDetailsView() {
-//        let viewController = MasterDetailsViewController.instantiate()
-        let viewController = UserTableViewController.instantiate()
-        self.window?.rootViewController = viewController
-        self.window?.makeKeyAndVisible()
+        let viewController = SplitViewController.instantiate()
+        self.present(viewController, animated: true, completion: nil)
     }
     
     // MARK: - Action Methods

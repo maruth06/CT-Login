@@ -7,12 +7,35 @@
 
 import Foundation
 import Combine
+import CoreLocation
+import MapKit
 
 class DetailsViewModel : ObservableObject, Identifiable {
     
-    private var userModel : UserModel
+    @Published private(set) var detailsModel : DetailsModel
     
-    init(_ userModel : UserModel) {
-        self.userModel = userModel
+    var region : MKCoordinateRegion {
+        let coordinate = CLLocationCoordinate2D(latitude: detailsModel.latitude,
+                                                longitude: detailsModel.longitude)
+        let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+        return MKCoordinateRegion(center: coordinate, span: span)
+        
+    }
+    
+    var pointAnnotation : MKPointAnnotation{
+        let pin = MKPointAnnotation()
+        pin.coordinate = CLLocationCoordinate2D(latitude: detailsModel.latitude,
+                                                longitude: detailsModel.longitude)
+        pin.title = "Location"
+        pin.subtitle = detailsModel.address
+        return pin
+    }
+    
+    init() {
+        self.detailsModel = DetailsModel()
+    }
+    
+    func updateDetailsModel(_ detailsModel : DetailsModel) {
+        self.detailsModel = detailsModel
     }
 }
