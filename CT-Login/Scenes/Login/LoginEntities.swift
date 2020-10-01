@@ -16,3 +16,13 @@ struct UserAccountEntity {
         self.userId = id
     }
 }
+
+struct CountryModel {
+    var code : String
+    var name : String
+    
+    init(_ code: String, _ name: String) {
+        self.code = code
+        self.name = name
+    }
+}

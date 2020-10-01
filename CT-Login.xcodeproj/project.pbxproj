@@ -31,7 +31,7 @@
 		7A860ED32522D25800DC4FB4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A860ED12522D25800DC4FB4 /* LoginViewController.xib */; };
 		7A860F2B2523402700DC4FB4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F2A2523402700DC4FB4 /* UIView+Extensions.swift */; };
 		7A860F422523492B00DC4FB4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F412523492B00DC4FB4 /* LoginViewModel.swift */; };
-		7A860F4C25234DDA00DC4FB4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F4B25234DDA00DC4FB4 /* UserAccount.swift */; };
+		7A860F4C25234DDA00DC4FB4 /* LoginEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860F4B25234DDA00DC4FB4 /* LoginEntities.swift */; };
 		7AA9E0EF25238B3B0084D6C0 /* SQLiteDatabse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9E0EE25238B3B0084D6C0 /* SQLiteDatabse.swift */; };
 		7AA9E101252394630084D6C0 /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9E100252394630084D6C0 /* APIRepository.swift */; };
 		7AA9E1112523A0B60084D6C0 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AA9E1102523A0B60084D6C0 /* Details.storyboard */; };
@@ -93,7 +93,7 @@
 		7A860ED12522D25800DC4FB4 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		7A860F2A2523402700DC4FB4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		7A860F412523492B00DC4FB4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		7A860F4B25234DDA00DC4FB4 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		7A860F4B25234DDA00DC4FB4 /* LoginEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntities.swift; sourceTree = "<group>"; };
 		7AA9E0EE25238B3B0084D6C0 /* SQLiteDatabse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDatabse.swift; sourceTree = "<group>"; };
 		7AA9E0F625238CB40084D6C0 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		7AA9E100252394630084D6C0 /* APIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		7A860EB22522CEB100DC4FB4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				7A860F4B25234DDA00DC4FB4 /* UserAccount.swift */,
+				7A860F4B25234DDA00DC4FB4 /* LoginEntities.swift */,
 				7A860ED02522D25800DC4FB4 /* LoginViewController.swift */,
 				7A860ED12522D25800DC4FB4 /* LoginViewController.xib */,
 				7A860F412523492B00DC4FB4 /* LoginViewModel.swift */,
@@ -453,7 +453,7 @@
 				7A179E10252624A70068FAF3 /* FadeTransition.swift in Sources */,
 				7A04B255252463EA0067F10F /* UserTableViewController.swift in Sources */,
 				7AA9E101252394630084D6C0 /* APIRepository.swift in Sources */,
-				7A860F4C25234DDA00DC4FB4 /* UserAccount.swift in Sources */,
+				7A860F4C25234DDA00DC4FB4 /* LoginEntities.swift in Sources */,
 				7A24AE732524D68700C03E56 /* MKMapView+Extensions.swift in Sources */,
 				7AA9E0EF25238B3B0084D6C0 /* SQLiteDatabse.swift in Sources */,
 				7A179E01252621950068FAF3 /* TransitionButton.swift in Sources */,

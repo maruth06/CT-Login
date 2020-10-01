@@ -50,8 +50,8 @@ class UserTableViewController: UITableViewController {
     
     private func configureBindings() {
         viewModel.$dataSource.sink { (users) in
-            self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         }.store(in: &subscriptions)
         
         viewModel.$errorModel.sink { (errorModel) in

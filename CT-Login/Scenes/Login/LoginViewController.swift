@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var errorUsernameLabel: UILabel!
     @IBOutlet private weak var errorPasswordLabel: UILabel!
     @IBOutlet private weak var loginView: UIView!
+    @IBOutlet private weak var countryButton: UIButton!
+    @IBOutlet private weak var pickerView: UIPickerView!
     
     private var viewModel : LoginViewModel!
     private var subscriptions = Set<AnyCancellable>()
@@ -34,9 +36,6 @@ class LoginViewController: UIViewController {
 
         setupNotificationObservers()
         configureViews()
-        
-        userNameTextField.text = "mockUser"
-        passwordTextField.text = "helloWorld"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,42 +52,61 @@ class LoginViewController: UIViewController {
         
         userNameTextField.addBorder(width: 1, color: .darkGray)
         passwordTextField.addBorder(width: 1, color: .darkGray)
+        
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        // Auto fill credentials
+        userNameTextField.text = "mockUser"
+        passwordTextField.text = "helloWorld"
     }
     
     private func configureBindings() {
-        viewModel.$isLoginSuccess.sink { (isSuccess) in
-            if isSuccess {
+        viewModel.$isLoginSuccess.sink { [weak self] (isSuccess) in
+            guard let self = self else { return }
+            guard let isSuccess = isSuccess else { return }
+            if isSuccess  {
                 self.showUserDetailsView()
             } else {
+                self.loginButton.stopAnimation()
                 self.errorMessageLabel.text = "Invalid username or password."
                 self.loginButton.shake()
             }
         }.store(in: &subscriptions)
         
-        viewModel.$showPassword.sink { (isShow) in
+        viewModel.$showPassword.sink { [weak self] (isShow) in
+            guard let self = self else { return }
             let title = isShow ? "HIDE" : "SHOW"
             self.togglePasswordButton.setTitle(title, for: .normal)
             self.passwordTextField.isSecureTextEntry = !isShow
         }.store(in: &subscriptions)
         
-        viewModel.$isUserNameEmpty.sink { (isEmpty) in
-            if isEmpty {
-                self.userNameTextField.addBorder(width: 1, color: .red)
-                self.errorUsernameLabel.text = "Username is required."
-            } else {
-                self.userNameTextField.addBorder(width: 1, color: .darkGray)
-                self.errorUsernameLabel.text = ""
-            }
+        viewModel.$isUserNameEmpty.sink { [weak self] (isEmpty) in
+            guard let self = self else { return }
+            guard let isEmpty = isEmpty else { return }
+            self.configureFieldErrorMessage(self.userNameTextField,
+                                            self.errorUsernameLabel,
+                                            isEmpty,
+                                            "Username is required.")
+        }.store(in: &subscriptions)
+
+        viewModel.$isPasswordEmpty.sink { (isEmpty) in
+            guard let isEmpty = isEmpty else { return }
+            self.configureFieldErrorMessage(self.passwordTextField,
+                                            self.errorPasswordLabel,
+                                            isEmpty,
+                                            "Password is required.")
         }.store(in: &subscriptions)
         
-        viewModel.$isPasswordEmpty.sink { (isEmpty) in
-            if isEmpty {
-                self.passwordTextField.addBorder(width: 1, color: .red)
-                self.errorPasswordLabel.text = "Password is required."
-            } else {
-                self.passwordTextField.addBorder(width: 1, color: .darkGray)
-                self.errorPasswordLabel.text = ""
-            }
+        viewModel.$isPickerViewHidden.sink { [weak self] (isCollapsed) in
+            guard let self = self else { return }
+            self.pickerView.isHidden = isCollapsed
+        }.store(in: &subscriptions)
+        
+        viewModel.$selectedCountry.sink { [weak self] (country) in
+            guard let self = self else { return }
+            guard let country = country else { return }
+            self.countryButton.setTitle(country, for: .normal)
         }.store(in: &subscriptions)
     }
     
@@ -100,6 +118,20 @@ class LoginViewController: UIViewController {
             object: nil)
     }
     
+    // MARK: - UI Methods
+    private func configureFieldErrorMessage(_ textField: UITextField,
+                                            _ label: UILabel,
+                                            _ isEmpty: Bool,
+                                            _ errorMessage: String) {
+        if isEmpty {
+            textField.addBorder(width: 1, color: .red)
+            label.text = errorMessage
+        } else {
+            textField.addBorder(width: 1, color: .darkGray)
+            label.text = ""
+        }
+    }
+
     // MARK: - Navigation Methods
     private func showUserDetailsView() {
         self.loginButton.stopAnimation(animationStyle: .expand, completion: {
@@ -129,15 +161,19 @@ class LoginViewController: UIViewController {
                        completion: nil)
     }
     
-    @IBAction func onTappedLoginButton(_ sender: Any) {
+    @IBAction private func onTappedLoginButton(_ sender: Any) {
         self.loginButton.startAnimation()
         self.errorMessageLabel.text = nil
         self.viewModel.validateUserCredentials(self.userNameTextField.text,
                                                self.passwordTextField.text)
     }
     
-    @IBAction func onTappedTogglePasswordButton(_ sender: Any) {
+    @IBAction private func onTappedTogglePasswordButton(_ sender: Any) {
         viewModel.showPassword = !viewModel.showPassword
+    }
+    
+    @IBAction private func onTappedCountryButton(_ sender: Any) {
+        viewModel.isPickerViewHidden = !viewModel.isPickerViewHidden
     }
 }
 
@@ -155,5 +191,26 @@ extension LoginViewController : UITextFieldDelegate {
         default: break
         }
         return true
+    }
+}
+
+
+extension LoginViewController : UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return viewModel.countryTitle(row)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        viewModel.updateSelectedCountry(row)
+    }
+}
+
+extension LoginViewController : UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.countries.count
     }
 }
