@@ -21,7 +21,7 @@
 		7A860E7A2522CB4700DC4FB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860E792522CB4700DC4FB4 /* SceneDelegate.swift */; };
 		7A860E812522CB4800DC4FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A860E802522CB4800DC4FB4 /* Assets.xcassets */; };
 		7A860E842522CB4800DC4FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A860E822522CB4800DC4FB4 /* LaunchScreen.storyboard */; };
-		7A860E8F2522CB4800DC4FB4 /* CT_LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860E8E2522CB4800DC4FB4 /* CT_LoginTests.swift */; };
+		7A860E8F2522CB4800DC4FB4 /* LoginTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860E8E2522CB4800DC4FB4 /* LoginTest.swift */; };
 		7A860E9A2522CB4900DC4FB4 /* CT_LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860E992522CB4900DC4FB4 /* CT_LoginUITests.swift */; };
 		7A860EB82522CF4400DC4FB4 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860EB72522CF4400DC4FB4 /* NetworkRequest.swift */; };
 		7A860EBD2522CF9A00DC4FB4 /* AppEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A860EBC2522CF9A00DC4FB4 /* AppEndpoint.swift */; };
@@ -80,7 +80,7 @@
 		7A860E832522CB4800DC4FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A860E852522CB4800DC4FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A860E8A2522CB4800DC4FB4 /* CT-LoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CT-LoginTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A860E8E2522CB4800DC4FB4 /* CT_LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CT_LoginTests.swift; sourceTree = "<group>"; };
+		7A860E8E2522CB4800DC4FB4 /* LoginTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTest.swift; sourceTree = "<group>"; };
 		7A860E902522CB4800DC4FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A860E952522CB4900DC4FB4 /* CT-LoginUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CT-LoginUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A860E992522CB4900DC4FB4 /* CT_LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CT_LoginUITests.swift; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 		7A860E8D2522CB4800DC4FB4 /* CT-LoginTests */ = {
 			isa = PBXGroup;
 			children = (
-				7A860E8E2522CB4800DC4FB4 /* CT_LoginTests.swift */,
+				7A860E8E2522CB4800DC4FB4 /* LoginTest.swift */,
 				7A860E902522CB4800DC4FB4 /* Info.plist */,
 			);
 			path = "CT-LoginTests";
@@ -478,7 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A860E8F2522CB4800DC4FB4 /* CT_LoginTests.swift in Sources */,
+				7A860E8F2522CB4800DC4FB4 /* LoginTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
