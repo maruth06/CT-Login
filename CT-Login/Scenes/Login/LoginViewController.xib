@@ -32,10 +32,10 @@
                     <rect key="frame" x="0.0" y="68" width="414" height="794"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-ar-50R">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="498"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="506"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HA0-Qe-Vqc">
-                                    <rect key="frame" x="16" y="16" width="382" height="466"/>
+                                    <rect key="frame" x="16" y="16" width="382" height="474"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex.: mockUser" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2jk-K0-Ec0">
                                             <rect key="frame" x="16" y="125" width="350" height="34"/>
@@ -65,9 +65,21 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Password"/>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-Hd-aGD">
-                                            <rect key="frame" x="172" y="336" width="38" height="30"/>
-                                            <state key="normal" title="Login"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-Hd-aGD" customClass="TransitionButton" customModule="CT_Login" customModuleProvider="target">
+                                            <rect key="frame" x="76.5" y="336" width="229" height="38"/>
+                                            <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="Login">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="spinnerColor">
+                                                    <color key="value" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="onTappedLoginButton:" destination="-1" eventType="touchUpInside" id="3Tc-MU-yBH"/>
                                             </connections>
@@ -119,6 +131,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="h7u-Hd-aGD" firstAttribute="height" secondItem="HA0-Qe-Vqc" secondAttribute="height" multiplier="0.08" id="2eQ-Q4-Rix"/>
                                         <constraint firstItem="h7B-0u-GXb" firstAttribute="leading" secondItem="HA0-Qe-Vqc" secondAttribute="leading" constant="16" id="5X7-El-qUy"/>
                                         <constraint firstItem="H2G-52-zfq" firstAttribute="leading" secondItem="HA0-Qe-Vqc" secondAttribute="leading" constant="16" id="5uA-UE-ddh"/>
                                         <constraint firstAttribute="trailing" secondItem="VdH-ay-9gP" secondAttribute="trailing" constant="8" id="6rf-ca-RTL"/>
@@ -137,6 +150,7 @@
                                         <constraint firstItem="h7u-Hd-aGD" firstAttribute="centerX" secondItem="HA0-Qe-Vqc" secondAttribute="centerX" id="Ue5-tc-0BR"/>
                                         <constraint firstItem="VdH-ay-9gP" firstAttribute="centerY" secondItem="e5D-Ln-zvz" secondAttribute="centerY" id="VAY-XX-DL8"/>
                                         <constraint firstItem="0KV-JJ-pR4" firstAttribute="top" secondItem="amD-rP-8Ig" secondAttribute="bottom" constant="32" id="XIh-NH-hFr"/>
+                                        <constraint firstItem="h7u-Hd-aGD" firstAttribute="width" secondItem="HA0-Qe-Vqc" secondAttribute="width" multiplier="0.6" id="Yjb-Ws-MzJ"/>
                                         <constraint firstItem="YGI-yy-cOp" firstAttribute="centerX" secondItem="HA0-Qe-Vqc" secondAttribute="centerX" id="ZtG-kB-7eh"/>
                                         <constraint firstItem="h7u-Hd-aGD" firstAttribute="centerX" secondItem="HA0-Qe-Vqc" secondAttribute="centerX" id="cTM-s1-9WV"/>
                                         <constraint firstAttribute="trailing" secondItem="2jk-K0-Ec0" secondAttribute="trailing" constant="16" id="dbu-IY-f82"/>
@@ -179,9 +193,14 @@
                 <constraint firstItem="8mk-qx-hP9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="nED-YP-x9Q"/>
                 <constraint firstItem="8mk-qx-hP9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nnC-Cz-j3k"/>
             </constraints>
-            <point key="canvasLocation" x="140.57971014492756" y="144.64285714285714"/>
+            <point key="canvasLocation" x="-135" y="99"/>
         </view>
     </objects>
+    <designables>
+        <designable name="h7u-Hd-aGD">
+            <size key="intrinsicContentSize" width="41" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

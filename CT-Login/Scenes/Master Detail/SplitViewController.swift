@@ -11,8 +11,6 @@ class SplitViewController: UISplitViewController {
 
     class func instantiate() -> UISplitViewController {
         let viewController = SplitViewController.instantiate(fromStoryboard: .Details)
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.modalTransitionStyle = .coverVertical
         return viewController
     }
     
@@ -29,12 +27,29 @@ class SplitViewController: UISplitViewController {
               let lastViewController = self.viewControllers.last as? UINavigationController,
               let detailViewController = lastViewController.viewControllers.first as? DetailsViewController else { fatalError() }
         masterViewController.setDelegate(detailViewController)
-        
     }
 }
 
 extension SplitViewController : UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
         return true
+    }
+}
+
+extension SplitViewController : UIViewControllerTransitioningDelegate {
+
+    open override var modalPresentationStyle: UIModalPresentationStyle {
+        get {
+            return .fullScreen
+        }
+        set {}
+    }
+
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FadeTransition(transitionDuration: 0.5, startingAlpha: 0.8)
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FadeTransition(transitionDuration: 0.5, startingAlpha: 0.8)
     }
 }

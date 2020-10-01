@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var userNameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var togglePasswordButton: UIButton!
-    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var loginButton: TransitionButton!
     @IBOutlet private weak var errorMessageLabel: UILabel!
     @IBOutlet private weak var errorUsernameLabel: UILabel!
     @IBOutlet private weak var errorPasswordLabel: UILabel!
@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         userNameTextField.returnKeyType = .next
         passwordTextField.returnKeyType = .done
-        loginView.fadeIn(duration: 4)
         
         userNameTextField.addBorder(width: 1, color: .darkGray)
         passwordTextField.addBorder(width: 1, color: .darkGray)
@@ -103,8 +102,10 @@ class LoginViewController: UIViewController {
     
     // MARK: - Navigation Methods
     private func showUserDetailsView() {
-        let viewController = SplitViewController.instantiate()
-        self.present(viewController, animated: true, completion: nil)
+        self.loginButton.stopAnimation(animationStyle: .expand, completion: {
+            let viewController = SplitViewController.instantiate()
+            self.present(viewController, animated: true, completion: nil)
+        })
     }
     
     // MARK: - Action Methods
@@ -129,9 +130,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onTappedLoginButton(_ sender: Any) {
+        self.loginButton.startAnimation()
         self.errorMessageLabel.text = nil
-        viewModel.validateUserCredentials(userNameTextField.text,
-                                          passwordTextField.text)
+        self.viewModel.validateUserCredentials(self.userNameTextField.text,
+                                               self.passwordTextField.text)
     }
     
     @IBAction func onTappedTogglePasswordButton(_ sender: Any) {
