@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="bottomConstraints" destination="2AJ-rD-Zew" id="etn-8W-2Yy"/>
                 <outlet property="errorMessageLabel" destination="h7B-0u-GXb" id="fBd-ba-S4a"/>
+                <outlet property="errorPasswordLabel" destination="spo-7l-1x1" id="FOG-bs-msQ"/>
+                <outlet property="errorUsernameLabel" destination="amD-rP-8Ig" id="mEU-i3-bwe"/>
                 <outlet property="loginButton" destination="h7u-Hd-aGD" id="LSC-qF-upY"/>
                 <outlet property="loginView" destination="HA0-Qe-Vqc" id="7t1-KR-JAc"/>
                 <outlet property="passwordTextField" destination="e5D-Ln-zvz" id="lZ0-IC-mc0"/>
@@ -102,13 +104,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amD-rP-8Ig" userLabel="Error username">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amD-rP-8Ig" userLabel="Error username">
                                             <rect key="frame" x="16" y="159" width="350" height="16"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                             <color key="textColor" systemColor="systemRedColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spo-7l-1x1" userLabel="Error password">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spo-7l-1x1" userLabel="Error password">
                                             <rect key="frame" x="16" y="262" width="350" height="16"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                             <color key="textColor" systemColor="systemRedColor"/>

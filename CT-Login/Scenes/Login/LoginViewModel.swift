@@ -22,17 +22,31 @@ class LoginViewModel : ObservableObject, Identifiable {
     
     @Published private(set) var isLoginSuccess : Bool = false
     @Published var showPassword : Bool = false
+    @Published private(set) var isUserNameEmpty : Bool = false
+    @Published private(set) var isPasswordEmpty : Bool = false
 
     init() {
         SQLiteDatabase.shared.insertUser("mockUser", "helloWorld")
     }
     
     func validateUserCredentials(_ userName: String?, _ password: String?) {
-        guard let userName = userName?.trimmingCharacters(in: .whitespacesAndNewlines),
-              let password = password else {
-            isLoginSuccess = false
-            return
+        isUserNameEmpty = false
+        isPasswordEmpty = false
+        var validName : String = ""
+        var validPassword : String = ""
+        if let name = userName {
+            isUserNameEmpty = isStringEmpty(name)
+            validName = name
         }
-        isLoginSuccess = (SQLiteDatabase.shared.queryUsers(userName, password).count != 0)
+        if let password = password {
+            isPasswordEmpty = isStringEmpty(password)
+            validPassword = password
+        }
+        guard (validName != "" && validPassword != "") else { return }
+        isLoginSuccess = (SQLiteDatabase.shared.queryUsers(validName, validPassword).count != 0)
+    }
+    
+    private func isStringEmpty(_ string: String) -> Bool {
+        return string.trimmingCharacters(in: .whitespacesAndNewlines) == ""
     }
 }

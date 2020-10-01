@@ -21,25 +21,28 @@ class UserTableViewController: UITableViewController {
     private var delegate : UserSelectedDelegate?
     private var detailsViewController : DetailsViewController?
     
-    func setDelegate(_ delegate : UserSelectedDelegate) {
-        self.delegate = delegate
+    func setDelegate(_ detailsViewController : DetailsViewController) {
+        self.delegate = detailsViewController
+        self.detailsViewController = detailsViewController
+        self.configureBindings()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureView()
-        configureBindings()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         self.refreshControl?.beginRefreshing()
         loadList()
     }
     
     private func configureView() {
         tableView.register(nib: [ItemTableViewCell.self])
+        tableView.tableFooterView = UIView()
         let control = UIRefreshControl()
         control.addTarget(self, action: #selector(loadList), for: .valueChanged)
         self.refreshControl = control
@@ -79,9 +82,12 @@ extension UserTableViewController {
 // MARK: UITableViewDelegate
 extension UserTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         delegate?.updateUserDetailsViewController(viewModel.getDetailsViewModel(indexPath.row))
         tableView.deselectRow(at: indexPath, animated: true)
+        if let splitViewController = self.navigationController?.splitViewController,
+           let viewController = detailsViewController {
+            splitViewController.showDetailViewController(viewController, sender: self)
+        }
     }
 }
 

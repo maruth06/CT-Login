@@ -17,7 +17,7 @@ class DetailsViewModel : ObservableObject, Identifiable {
     var region : MKCoordinateRegion {
         let coordinate = CLLocationCoordinate2D(latitude: detailsModel.latitude,
                                                 longitude: detailsModel.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+        let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
         return MKCoordinateRegion(center: coordinate, span: span)
         
     }
@@ -26,7 +26,7 @@ class DetailsViewModel : ObservableObject, Identifiable {
         let pin = MKPointAnnotation()
         pin.coordinate = CLLocationCoordinate2D(latitude: detailsModel.latitude,
                                                 longitude: detailsModel.longitude)
-        pin.title = "Location"
+        pin.title = detailsModel.city
         pin.subtitle = detailsModel.address
         return pin
     }

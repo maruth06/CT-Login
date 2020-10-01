@@ -16,6 +16,7 @@ struct DetailsModel {
     var address : String
     var company : String
     var latitude : Double
+    var city : String
     var longitude : Double
     
     init() {
@@ -27,6 +28,7 @@ struct DetailsModel {
         company = ""
         latitude = 0.0
         longitude = 0.0
+        city = ""
     }
     
     init(_ userModel : UserModel) {
@@ -36,7 +38,10 @@ struct DetailsModel {
         phone = userModel.phone
         address = userModel.address.street + ", " + userModel.address.city
         company = userModel.company.name
+        city = userModel.address.city
         latitude = userModel.address.geo.lat.toDouble
         longitude = userModel.address.geo.lng.toDouble
+        print(latitude)
+        print(longitude)
     }
 }

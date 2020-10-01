@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var togglePasswordButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var errorMessageLabel: UILabel!
+    @IBOutlet private weak var errorUsernameLabel: UILabel!
+    @IBOutlet private weak var errorPasswordLabel: UILabel!
     @IBOutlet private weak var loginView: UIView!
     
     private var viewModel : LoginViewModel!
@@ -31,10 +33,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setupNotificationObservers()
-        configureBindings()
+        configureViews()
         
         userNameTextField.text = "mockUser"
         passwordTextField.text = "helloWorld"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        configureBindings()
     }
 
     private func configureViews() {
@@ -43,6 +51,9 @@ class LoginViewController: UIViewController {
         userNameTextField.returnKeyType = .next
         passwordTextField.returnKeyType = .done
         loginView.fadeIn(duration: 4)
+        
+        userNameTextField.addBorder(width: 1, color: .darkGray)
+        passwordTextField.addBorder(width: 1, color: .darkGray)
     }
     
     private func configureBindings() {
@@ -50,13 +61,35 @@ class LoginViewController: UIViewController {
             if isSuccess {
                 self.showUserDetailsView()
             } else {
+                self.errorMessageLabel.text = "Invalid username or password."
                 self.loginButton.shake()
             }
         }.store(in: &subscriptions)
+        
         viewModel.$showPassword.sink { (isShow) in
             let title = isShow ? "HIDE" : "SHOW"
             self.togglePasswordButton.setTitle(title, for: .normal)
             self.passwordTextField.isSecureTextEntry = !isShow
+        }.store(in: &subscriptions)
+        
+        viewModel.$isUserNameEmpty.sink { (isEmpty) in
+            if isEmpty {
+                self.userNameTextField.addBorder(width: 1, color: .red)
+                self.errorUsernameLabel.text = "Username is required."
+            } else {
+                self.userNameTextField.addBorder(width: 1, color: .darkGray)
+                self.errorUsernameLabel.text = ""
+            }
+        }.store(in: &subscriptions)
+        
+        viewModel.$isPasswordEmpty.sink { (isEmpty) in
+            if isEmpty {
+                self.passwordTextField.addBorder(width: 1, color: .red)
+                self.errorPasswordLabel.text = "Password is required."
+            } else {
+                self.passwordTextField.addBorder(width: 1, color: .darkGray)
+                self.errorPasswordLabel.text = ""
+            }
         }.store(in: &subscriptions)
     }
     
@@ -96,14 +129,10 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onTappedLoginButton(_ sender: Any) {
+        self.errorMessageLabel.text = nil
         viewModel.validateUserCredentials(userNameTextField.text,
                                           passwordTextField.text)
     }
-    
-    @IBAction func onTappedCreateAccountButton(_ sender: Any) {
-        
-    }
-    
     
     @IBAction func onTappedTogglePasswordButton(_ sender: Any) {
         viewModel.showPassword = !viewModel.showPassword

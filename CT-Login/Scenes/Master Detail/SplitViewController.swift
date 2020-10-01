@@ -23,10 +23,18 @@ class SplitViewController: UISplitViewController {
     }
     
     private func configure() {
+        delegate = self
         guard let leftNavController = self.viewControllers.first as? UINavigationController,
               let masterViewController = leftNavController.viewControllers.first as? UserTableViewController,
               let lastViewController = self.viewControllers.last as? UINavigationController,
               let detailViewController = lastViewController.viewControllers.first as? DetailsViewController else { fatalError() }
         masterViewController.setDelegate(detailViewController)
+        
+    }
+}
+
+extension SplitViewController : UISplitViewControllerDelegate {
+    func splitViewController(_ splitViewController: UISplitViewController, showDetail vc: UIViewController, sender: Any?) -> Bool {
+        return true
     }
 }

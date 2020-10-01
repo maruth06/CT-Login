@@ -20,13 +20,13 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2e-8y-wOs">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="330.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="479"/>
                                         <subviews>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4aM-l8-qRn">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
                                             </mapView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="PuQ-Et-0aE">
-                                                <rect key="frame" x="8" y="218" width="398" height="104.5"/>
+                                                <rect key="frame" x="8" y="366.5" width="398" height="104.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvC-dz-r8P" userLabel="Full name">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="20.5"/>
@@ -88,7 +88,7 @@
                             <constraint firstItem="HYu-sE-Zs5" firstAttribute="bottom" secondItem="dKl-Ik-r0I" secondAttribute="bottom" id="MQF-yz-Azz"/>
                             <constraint firstItem="HYu-sE-Zs5" firstAttribute="trailing" secondItem="dKl-Ik-r0I" secondAttribute="trailing" id="O8O-mi-HPv"/>
                             <constraint firstItem="dKl-Ik-r0I" firstAttribute="top" secondItem="HYu-sE-Zs5" secondAttribute="top" id="YI4-TB-ea0"/>
-                            <constraint firstItem="4aM-l8-qRn" firstAttribute="height" secondItem="Jn4-8m-Qyi" secondAttribute="height" multiplier="0.234375" id="Zuo-SL-8fU"/>
+                            <constraint firstItem="4aM-l8-qRn" firstAttribute="height" secondItem="Jn4-8m-Qyi" secondAttribute="height" multiplier="0.4" id="Zuo-SL-8fU"/>
                             <constraint firstItem="dKl-Ik-r0I" firstAttribute="leading" secondItem="HYu-sE-Zs5" secondAttribute="leading" id="kWs-J6-Ktm"/>
                         </constraints>
                     </view>
