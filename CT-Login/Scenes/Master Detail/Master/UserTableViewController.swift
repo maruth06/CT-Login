@@ -24,20 +24,21 @@ class UserTableViewController: UITableViewController {
     func setDelegate(_ detailsViewController : DetailsViewController) {
         self.delegate = detailsViewController
         self.detailsViewController = detailsViewController
-        self.configureBindings()
+        self.loadList()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureView()
+        configureBindings()
+        loadList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.refreshControl?.beginRefreshing()
-        loadList()
     }
     
     private func configureView() {
@@ -55,9 +56,9 @@ class UserTableViewController: UITableViewController {
         }.store(in: &subscriptions)
         
         viewModel.$errorModel.sink { (errorModel) in
+            self.refreshControl?.endRefreshing()
             guard let error = errorModel else { return }
             self.showNetworkError(error)
-            self.refreshControl?.endRefreshing()
         }.store(in: &subscriptions)
     }
     
@@ -65,6 +66,7 @@ class UserTableViewController: UITableViewController {
         viewModel.fetchUsers()
     }
 }
+
 
 // MARK: UITableViewDataSource
 extension UserTableViewController {

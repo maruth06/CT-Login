@@ -70,7 +70,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Screen" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGI-yy-cOp">
                                             <rect key="frame" x="96" y="36" width="190.5" height="41"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdH-ay-9gP">
@@ -111,6 +110,21 @@
                                             <color key="textColor" systemColor="systemRedColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1ln-oo-u5C">
+                                            <rect key="frame" x="16" y="278" width="350" height="30"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQZ-tr-d1X">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="onTappedCountryButton:" destination="-1" eventType="touchUpInside" id="XEP-DG-B3L"/>
+                                                    </connections>
+                                                </button>
+                                                <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUn-OC-65E">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="0.0"/>
+                                                </pickerView>
+                                            </subviews>
+                                        </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="h7u-Hd-aGD" customClass="TransitionButton" customModule="CT_Login" customModuleProvider="target">
                                             <rect key="frame" x="76.5" y="346" width="229" height="39"/>
                                             <color key="backgroundColor" red="0.16078431369999999" green="0.50196078430000002" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -130,23 +144,8 @@
                                                 <action selector="onTappedLoginButton:" destination="-1" eventType="touchUpInside" id="3Tc-MU-yBH"/>
                                             </connections>
                                         </button>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1ln-oo-u5C">
-                                            <rect key="frame" x="16" y="278" width="350" height="30"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQZ-tr-d1X">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="onTappedCountryButton:" destination="-1" eventType="touchUpInside" id="XEP-DG-B3L"/>
-                                                    </connections>
-                                                </button>
-                                                <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUn-OC-65E">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="0.0"/>
-                                                </pickerView>
-                                            </subviews>
-                                        </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                     <constraints>
                                         <constraint firstItem="h7u-Hd-aGD" firstAttribute="height" secondItem="HA0-Qe-Vqc" secondAttribute="height" multiplier="0.08" id="2eQ-Q4-Rix"/>
                                         <constraint firstItem="h7B-0u-GXb" firstAttribute="leading" secondItem="HA0-Qe-Vqc" secondAttribute="leading" constant="16" id="5X7-El-qUy"/>

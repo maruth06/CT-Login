@@ -11,14 +11,14 @@ import Combine
 
 class DetailsViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var fullNameLabel: UILabel!
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var phoneLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
     
-    private lazy var viewModel : DetailsViewModel = {
+    lazy private(set) var viewModel : DetailsViewModel = {
         return DetailsViewModel()
     }()
     
@@ -26,7 +26,6 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
     }
     
